@@ -1,0 +1,14 @@
+@import '../helpers/variables.scss';
+
+.layout {
+  max-width: 1440px;
+  margin: auto;
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1440px;
+    padding: 26px 22px;
+    background-color: $bkg_gray;
+  }
+}

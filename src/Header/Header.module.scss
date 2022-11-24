@@ -1,0 +1,17 @@
+@import '../helpers/variables.scss';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 22px;
+  max-width: 1440px;
+  min-height: 80px;
+
+  .title {
+    font: $font_inter;
+    font-size: 1.125rem;
+    text-decoration: none;
+    color: $name-color;
+  }
+}
