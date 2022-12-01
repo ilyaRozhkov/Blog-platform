@@ -5,7 +5,7 @@ const token = localStorage.getItem('token');
 export const getArticles =
   (page = 0) =>
   (dispatch) =>
-    fetch(`https://blog.kata.academy/api/articles?offset=${page}`, {
+    fetch(`https://blog.kata.academy/api/articles?offset=${page}`, console.log(page), {
       method: 'GET',
       headers: {
         accept: 'application/json',

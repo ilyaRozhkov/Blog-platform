@@ -15,14 +15,19 @@ export const ListArticles = () => {
   const { articlesList, articlesCount, isLoading, error, offset } = useSelector((store) => store.articles);
   const { isAuthorized } = useSelector((store) => store.personLogIn);
   const dispatch = useDispatch();
-
   const items = articlesList.map((el) => <Article key={uuidv4()} {...el} />);
   const count = Math.ceil(articlesCount / 20);
-
+  let pageDef = 1;
+  if (sessionStorage.getItem('pagesnum') !== null) {
+    pageDef = Number(sessionStorage.getItem('pagesnum'));
+  }
+  let pageDefOff = 0;
+  if (sessionStorage.getItem('pagesnum') !== null) {
+    pageDefOff = Number(sessionStorage.getItem('pages'));
+  }
   useEffect(() => {
-    dispatch(getArticles(offset));
+    dispatch(getArticles(pageDefOff));
   }, [offset, isAuthorized]);
-
   return error ? (
     <div className={classes.articles}>
       <ErrorPage />
@@ -37,11 +42,14 @@ export const ListArticles = () => {
       <Pagination
         className={classes.pagination}
         count={count}
+        page={pageDef}
         shape="rounded"
         color="primary"
         size="small"
         onChange={(_, value) => {
           const page = (value - 1) * 20;
+          sessionStorage.setItem('pages', page);
+          sessionStorage.setItem('pagesnum', value);
           dispatch(fetchOffset(page));
         }}
       />

@@ -110,7 +110,7 @@ export const NewArticle = () => {
                   <input
                     className={classes.tag}
                     placeholder="Tag"
-                    {...register(`tagList.${index}.tag`, { required: false })}
+                    {...register(`tagList.${index}.tag`, { required: true })}
                   />
                   <button type="button" className={classes['tag-button']} onClick={() => remove(index)}>
                     Delete
